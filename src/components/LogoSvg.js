@@ -95,7 +95,7 @@ const LogoSvg = (props) => {
       <g
         id="Page-1"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         fill="none"
         fill-rule="evenodd"
       >
@@ -161,7 +161,7 @@ const LogoSvg = (props) => {
             ></path>
             <g id="Group-34" transform="translate(22.000000, 17.000000)">
               <mask id="mask-2" fill="currentColor">
-                <use xlinkHef="#path-1"></use>
+                <use xlinkHref="#path-1"></use>
               </mask>
               <g id="Clip-33"></g>
               <path
@@ -172,7 +172,7 @@ const LogoSvg = (props) => {
             </g>
             <g id="Group-37" transform="translate(48.000000, 39.000000)">
               <mask id="mask-4" fill="currentColor">
-                <use xlinkHef="#path-3"></use>
+                <use xlinkHref="#path-3"></use>
               </mask>
               <g id="Clip-36"></g>
               <path
@@ -183,7 +183,7 @@ const LogoSvg = (props) => {
             </g>
             <g id="Group-40" transform="translate(48.000000, 29.000000)">
               <mask id="mask-6" fill="currentColor">
-                <use xlinkHef="#path-5"></use>
+                <use xlinkHref="#path-5"></use>
               </mask>
               <g id="Clip-39"></g>
               <path
@@ -194,7 +194,7 @@ const LogoSvg = (props) => {
             </g>
             <g id="Group-43" transform="translate(39.000000, 39.000000)">
               <mask id="mask-8" fill="currentColor">
-                <use xlinkHef="#path-7"></use>
+                <use xlinkHref="#path-7"></use>
               </mask>
               <g id="Clip-42"></g>
               <path
@@ -205,7 +205,7 @@ const LogoSvg = (props) => {
             </g>
             <g id="Group-46" transform="translate(39.000000, 17.000000)">
               <mask id="mask-10" fill="currentColor">
-                <use xlinkHef="#path-9"></use>
+                <use xlinkHref="#path-9"></use>
               </mask>
               <g id="Clip-45"></g>
               <path
@@ -216,7 +216,7 @@ const LogoSvg = (props) => {
             </g>
             <g id="Group-49" transform="translate(30.000000, 39.000000)">
               <mask id="mask-12" fill="currentColor">
-                <use xlinkHef="#path-11"></use>
+                <use xlinkHref="#path-11"></use>
               </mask>
               <g id="Clip-48"></g>
               <path
@@ -227,7 +227,7 @@ const LogoSvg = (props) => {
             </g>
             <g id="Group-52" transform="translate(30.000000, 7.000000)">
               <mask id="mask-14" fill="currentColor">
-                <use xlinkHef="#path-13"></use>
+                <use xlinkHref="#path-13"></use>
               </mask>
               <g id="Clip-51"></g>
               <path
@@ -238,7 +238,7 @@ const LogoSvg = (props) => {
             </g>
             <g id="Group-55" transform="translate(21.000000, 17.000000)">
               <mask id="mask-16" fill="currentColor">
-                <use xlinkHef="#path-15"></use>
+                <use xlinkHref="#path-15"></use>
               </mask>
               <g id="Clip-54"></g>
               <path
@@ -249,7 +249,7 @@ const LogoSvg = (props) => {
             </g>
             <g id="Group-58" transform="translate(52.000000, 36.000000)">
               <mask id="mask-18" fill="currentColor">
-                <use xlinkHef="#path-17"></use>
+                <use xlinkHref="#path-17"></use>
               </mask>
               <g id="Clip-57"></g>
               <path
@@ -268,7 +268,7 @@ const LogoSvg = (props) => {
             ></polygon>
             <g id="Group-65" transform="translate(13.000000, 36.000000)">
               <mask id="mask-20" fill="currentColor">
-                <use xlinkHef="#path-19"></use>
+                <use xlinkHref="#path-19"></use>
               </mask>
               <g id="Clip-64"></g>
               <path
@@ -291,7 +291,7 @@ const LogoSvg = (props) => {
             ></polygon>
             <g id="Group-74" transform="translate(21.000000, 36.000000)">
               <mask id="mask-22" fill="currentColor">
-                <use xlinkHef="#path-21"></use>
+                <use xlinkHref="#path-21"></use>
               </mask>
               <g id="Clip-73"></g>
               <path
@@ -302,7 +302,7 @@ const LogoSvg = (props) => {
             </g>
             <g id="Group-77">
               <mask id="mask-24" fill="currentColor">
-                <use xlinkHef="#path-23"></use>
+                <use xlinkHref="#path-23"></use>
               </mask>
               <g id="Clip-76"></g>
               <path
@@ -313,7 +313,7 @@ const LogoSvg = (props) => {
             </g>
             <g id="Group-80" transform="translate(36.000000, 0.000000)">
               <mask id="mask-26" fill="currentColor">
-                <use xlinkHef="#path-25"></use>
+                <use xlinkHref="#path-25"></use>
               </mask>
               <g id="Clip-79"></g>
               <path
@@ -324,7 +324,7 @@ const LogoSvg = (props) => {
             </g>
             <g id="Group-83" transform="translate(36.000000, 36.000000)">
               <mask id="mask-28" fill="currentColor">
-                <use xlinkHef="#path-27"></use>
+                <use xlinkHref="#path-27"></use>
               </mask>
               <g id="Clip-82"></g>
               <path
@@ -335,7 +335,7 @@ const LogoSvg = (props) => {
             </g>
             <g id="Group-86" transform="translate(70.000000, 35.000000)">
               <mask id="mask-30" fill="currentColor">
-                <use xlinkHef="#path-29"></use>
+                <use xlinkHref="#path-29"></use>
               </mask>
               <g id="Clip-85"></g>
               <path
@@ -346,7 +346,7 @@ const LogoSvg = (props) => {
             </g>
             <g id="Group-89" transform="translate(0.000000, 36.000000)">
               <mask id="mask-32" fill="currentColor">
-                <use xlinkHef="#path-31"></use>
+                <use xlinkHref="#path-31"></use>
               </mask>
               <g id="Clip-88"></g>
               <path
@@ -357,7 +357,7 @@ const LogoSvg = (props) => {
             </g>
             <g id="Group-92" transform="translate(35.000000, 69.000000)">
               <mask id="mask-34" fill="currentColor">
-                <use xlinkHef="#path-33"></use>
+                <use xlinkHref="#path-33"></use>
               </mask>
               <g id="Clip-91"></g>
               <path
@@ -368,7 +368,7 @@ const LogoSvg = (props) => {
             </g>
             <g id="Group-95">
               <mask id="mask-36" fill="currentColor">
-                <use xlinkHef="#path-35"></use>
+                <use xlinkHref="#path-35"></use>
               </mask>
               <g id="Clip-94"></g>
               <path
@@ -379,7 +379,7 @@ const LogoSvg = (props) => {
             </g>
             <g id="Group-98" transform="translate(35.000000, 0.000000)">
               <mask id="mask-38" fill="currentColor">
-                <use xlinkHef="#path-37"></use>
+                <use xlinkHref="#path-37"></use>
               </mask>
               <g id="Clip-97"></g>
               <path
@@ -390,7 +390,7 @@ const LogoSvg = (props) => {
             </g>
             <g id="Group-101" transform="translate(0.000000, 35.000000)">
               <mask id="mask-40" fill="currentColor">
-                <use xlinkHef="#path-39"></use>
+                <use xlinkHref="#path-39"></use>
               </mask>
               <g id="Clip-100"></g>
               <path

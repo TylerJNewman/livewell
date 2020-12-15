@@ -1,11 +1,15 @@
 import {Flex, useColorMode, FlexProps} from '@chakra-ui/react'
-
-export const Layout = (props: FlexProps) => {
+interface Props extends FlexProps {
+  lightColor?: string
+  darkColor?: string
+}
+export const Layout = ({lightColor, darkColor, ...props}: Props) => {
   const {colorMode} = useColorMode()
+  console.log({lightColor})
 
   const bgColor = {
-    light: 'orange.200',
-    dark: 'blue.500',
+    light: lightColor ?? 'orange.200',
+    dark: darkColor ?? 'blue.500',
   }
 
   const color = {light: 'black', dark: 'white'}

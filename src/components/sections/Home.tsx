@@ -1,5 +1,6 @@
 import React from 'react'
-import {Box, Flex, Heading} from '@chakra-ui/react'
+import {Flex, Heading} from '@chakra-ui/react'
+import NextLink from 'next/link'
 
 const title = 'I want'
 
@@ -12,38 +13,44 @@ export default function Home() {
         {title}
       </Heading>
       <Flex direction="row" px={8} py={8} justify="center">
-        <Flex
-          w={[160, 240]}
-          h={[160, 240]}
-          boxShadow="2xl"
-          p="6"
-          rounded="xl"
-          bg="orange.400"
-          mx={[3, 6]}
-          my={[4, 4]}
-          justify="center"
-          align="center"
-        >
-          <Heading as="h2" size="xl" color="white">
-            Mind
-          </Heading>
-        </Flex>
-        <Flex
-          w={[160, 240]}
-          h={[160, 240]}
-          boxShadow="2xl"
-          p="6"
-          rounded="xl"
-          bg="yellow.400"
-          mx={[3, 6]}
-          my={[4, 4]}
-          justify="center"
-          align="center"
-        >
-          <Heading as="h2" size="xl" color="white">
-            Body
-          </Heading>
-        </Flex>
+        <NextLink href="/range">
+          <Flex
+            cursor="pointer"
+            w={[160, 240]}
+            h={[160, 240]}
+            boxShadow="2xl"
+            p="6"
+            rounded="xl"
+            bg="orange.400"
+            mx={[3, 6]}
+            my={[4, 4]}
+            justify="center"
+            align="center"
+          >
+            <Heading as="h2" size="xl" color="white">
+              Mind
+            </Heading>
+          </Flex>
+        </NextLink>
+        <NextLink href="/range">
+          <Flex
+            cursor="pointer"
+            w={[160, 240]}
+            h={[160, 240]}
+            boxShadow="2xl"
+            p="6"
+            rounded="xl"
+            bg="yellow.400"
+            mx={[3, 6]}
+            my={[4, 4]}
+            justify="center"
+            align="center"
+          >
+            <Heading as="h2" size="xl" color="white">
+              Body
+            </Heading>
+          </Flex>
+        </NextLink>
         {/* <Box
           mx="1.5em"
           my="1em"

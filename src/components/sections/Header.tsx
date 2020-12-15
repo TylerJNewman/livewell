@@ -1,7 +1,8 @@
 import React from 'react'
-import Link from 'next/link'
-import {Box, Flex, Text, Button} from '@chakra-ui/react'
+import NextLink from 'next/link'
+import {Box, Flex, Text, Button, Link} from '@chakra-ui/react'
 import Logo from '../ui/Logo'
+import {DarkModeSwitch} from '../DarkModeSwitch'
 
 const MenuItems = (props: any) => {
   const {children, isLast, to = '/', ...rest} = props
@@ -12,7 +13,9 @@ const MenuItems = (props: any) => {
       display="block"
       {...rest}
     >
-      <Link href={to}>{children}</Link>
+      <NextLink href={to}>
+        <Link>{children}</Link>
+      </NextLink>
     </Text>
   )
 }
@@ -59,6 +62,7 @@ const Header = (props: any) => {
       <Flex align="center">
         <Logo />
       </Flex>
+      {/* <DarkModeSwitch /> */}
 
       <Box display={{base: 'block', md: 'none'}} onClick={toggleMenu}>
         {show ? <CloseIcon /> : <MenuIcon />}
@@ -78,9 +82,7 @@ const Header = (props: any) => {
             <Text fontSize="2xl">Sign In</Text>
           </MenuItems>
           <MenuItems to="/app" isLast>
-            <Button size="lg" colorScheme="orange">
-              Contact Us
-            </Button>
+            <Button size="lg">Contact Us</Button>
           </MenuItems>
         </Flex>
       </Box>
