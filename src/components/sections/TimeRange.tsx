@@ -9,6 +9,7 @@ import {
   WrapItem,
 } from '@chakra-ui/react'
 import Link from 'next/link'
+import OptionsWrapper from '../ui/OptionsWrapper'
 
 const title = 'I want'
 const options = ['1', '2', '15']
@@ -53,15 +54,23 @@ export default function Home() {
   // const boxSize = useBreakpointValue({base: '160px', md: '240px'})
 
   return (
-    <Flex align="center" direction="column" wrap="nowrap" maxW="1200px" px={8}>
-      <Heading as="h1" size="xl" fontWeight="bold" display="block">
-        {title}
-      </Heading>
-      <Wrap direction="row" px={8} py={8} justify="center">
-        {options.map((minutes) => (
-          <Option minutes={minutes} />
-        ))}
-      </Wrap>
-    </Flex>
+    <OptionsWrapper>
+      <Flex
+        align="center"
+        direction="column"
+        wrap="nowrap"
+        maxW="1200px"
+        px={8}
+      >
+        <Heading as="h1" size="xl" fontWeight="bold" display="block">
+          {title}
+        </Heading>
+        <Wrap direction="row" px={8} py={8} justify="center">
+          {options.map((minutes) => (
+            <Option minutes={minutes} />
+          ))}
+        </Wrap>
+      </Flex>
+    </OptionsWrapper>
   )
 }
