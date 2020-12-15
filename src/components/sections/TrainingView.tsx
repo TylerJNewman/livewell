@@ -1,5 +1,13 @@
 import React from 'react'
-import {AspectRatio, Box, Button, Center, Heading, Text} from '@chakra-ui/react'
+import {
+  AspectRatio,
+  Box,
+  Button,
+  Center,
+  Flex,
+  Heading,
+  Text,
+} from '@chakra-ui/react'
 import Link from 'next/link'
 
 const title = `World's Greatest Stetch`
@@ -12,34 +20,7 @@ interface Props {
 
 function Feature({title, desc, ...rest}: Props) {
   return (
-    <Box mt="25px" px="30px" flex="1" {...rest}>
-      <Heading as="h2" size="2xl">
-        {title}
-      </Heading>
-      <Text mt={4}>{desc}</Text>
-      <Center>
-        <Link href="/complete">
-          <Button
-            width={['100%', '100%', '100%', 'auto']}
-            variant="solid"
-            mt={8}
-            colorScheme="gray"
-            size="lg"
-            px={16}
-          >
-            <Heading as="h4" size="md" letterSpacing=".08em">
-              COMPLETE
-            </Heading>
-          </Button>
-        </Link>
-      </Center>
-    </Box>
-  )
-}
-
-const TrainingView = () => {
-  return (
-    <Box maxW="1165px">
+    <Box px={['0px', '0px', '50px', '50px']}>
       <AspectRatio ratio={1065 / 600}>
         <iframe
           title="naruto"
@@ -47,6 +28,43 @@ const TrainingView = () => {
           allowFullScreen
         />
       </AspectRatio>
+      <Flex
+        justify="center"
+        align="center"
+        direction="column"
+        px={['15px', '30px', '0px']}
+        mt={['25px', '25px', '45px']}
+      >
+        <Heading as="h2" size="2xl" w="100%">
+          {title}
+        </Heading>
+        <Text mt={4} w="100%">
+          {desc}
+        </Text>
+        <Center>
+          <Link href="/complete">
+            <Button
+              width={['100%', '100%', '100%', 'auto']}
+              variant="solid"
+              mt={8}
+              colorScheme="gray"
+              size="lg"
+              px={16}
+            >
+              <Heading as="h4" size="md" letterSpacing=".08em">
+                COMPLETE
+              </Heading>
+            </Button>
+          </Link>
+        </Center>
+      </Flex>
+    </Box>
+  )
+}
+
+const TrainingView = () => {
+  return (
+    <Box maxW="1165px">
       <Feature title={title} desc={desc} />
     </Box>
   )

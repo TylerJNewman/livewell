@@ -55,7 +55,6 @@ const Header = (props: any) => {
       // mb={8}
       p={8}
       bg={['primary.500', 'primary.500', 'transparent', 'transparent']}
-      maxW="1200px"
       borderBottomColor="rgba(255, 255, 255, 0.4)"
       borderBottomStyle="solid"
       borderBottomWidth="1px"
