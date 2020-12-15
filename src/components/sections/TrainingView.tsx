@@ -18,7 +18,7 @@ interface Props {
   desc: string
 }
 
-function Feature({title, desc, ...rest}: Props) {
+function Feature({title, desc}: Props) {
   return (
     <Box px={['0px', '0px', '50px', '50px']}>
       <AspectRatio ratio={1065 / 600}>
