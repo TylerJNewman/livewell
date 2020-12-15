@@ -2,7 +2,6 @@ import React from 'react'
 import NextLink from 'next/link'
 import {Box, Flex, Text, Button, Link} from '@chakra-ui/react'
 import Logo from '../ui/Logo'
-import {DarkModeSwitch} from '../DarkModeSwitch'
 
 const MenuItems = (props: any) => {
   const {children, isLast, to = '/', ...rest} = props
@@ -53,7 +52,7 @@ const Header = (props: any) => {
       justify="space-between"
       wrap="wrap"
       w="100%"
-      mb={8}
+      // mb={8}
       p={8}
       bg={['primary.500', 'primary.500', 'transparent', 'transparent']}
       maxW="1200px"

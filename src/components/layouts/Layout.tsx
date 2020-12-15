@@ -5,7 +5,6 @@ interface Props extends FlexProps {
 }
 export const Layout = ({lightColor, darkColor, ...props}: Props) => {
   const {colorMode} = useColorMode()
-  console.log({lightColor})
 
   const bgColor = {
     light: lightColor ?? 'orange.200',

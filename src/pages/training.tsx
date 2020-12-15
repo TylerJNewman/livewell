@@ -1,6 +1,7 @@
 import React from 'react'
 import Layout from 'src/components/layouts/Layout'
 import Header from 'src/components/sections/Header'
+import TrainingView from 'src/components/sections/TrainingView'
 
 const Training = () => (
   <Layout
@@ -10,6 +11,7 @@ const Training = () => (
     darkColor={'red.300'}
   >
     <Header />
+    <TrainingView />
   </Layout>
 )
 
