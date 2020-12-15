@@ -1,10 +1,11 @@
 import React from 'react'
-import {DarkModeSwitch} from 'src/components/DarkModeSwitch'
-import Container from 'src/components/layouts/Layout'
+import Layout from 'src/components/layouts/Layout'
+import Header from 'src/components/sections/Header'
 import Hero from 'src/components/sections/Hero'
 
 const Index = () => (
-  <Container height="100vh">
+  <Layout height="100vh">
+    <Header />
     <Hero
       title="Launding Page Title Here"
       subtitle="This is the subheader section where you describe the basic benefits of your product"
@@ -12,8 +13,7 @@ const Index = () => (
       ctaText="Create your account now"
       ctaLink="/signup"
     />
-    <DarkModeSwitch />
-  </Container>
+  </Layout>
 )
 
 export default Index
