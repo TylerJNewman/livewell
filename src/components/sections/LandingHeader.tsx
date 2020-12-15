@@ -1,19 +1,20 @@
 import React from 'react'
-import Link from 'next/link'
-import {Box, Flex, Text, Button} from '@chakra-ui/react'
+import NextLink from 'next/link'
+import {Box, Flex, Text, Button, Link} from '@chakra-ui/react'
 import Logo from '../ui/Logo'
 
 const MenuItems = (props: any) => {
-  const {children, isLast, to = '/', ...rest} = props
+  const {children, isLast, to = '/'} = props
   return (
-    <Text
-      mb={{base: isLast ? 0 : 8, lg: 0}}
-      mr={{base: 0, sm: isLast ? 0 : 8}}
-      display="block"
-      {...rest}
-    >
-      <Link href={to}>{children}</Link>
-    </Text>
+    <NextLink href={to}>
+      <Box
+        mb={{base: isLast ? 0 : 8, lg: 0}}
+        mr={{base: 0, lg: isLast ? 0 : 8}}
+        display="block"
+      >
+        <Link>{children}</Link>
+      </Box>
+    </NextLink>
   )
 }
 
@@ -52,7 +53,7 @@ const Header = (props: any) => {
       w="100%"
       mb={8}
       p={8}
-      bg={['primary.500', 'primary.500', 'transparent', 'transparent']}
+      bg={'inherit'}
       maxW="1200px"
       {...props}
     >
@@ -67,6 +68,14 @@ const Header = (props: any) => {
       <Box
         display={{base: show ? 'block' : 'none', lg: 'block'}}
         flexBasis={{base: '100%', lg: 'auto'}}
+        top={{base: '5em', lg: 'unset'}}
+        left={{base: '0', lg: 'unset'}}
+        bottom={{base: '0', lg: 'unset'}}
+        right={{base: '0', lg: 'unset'}}
+        position={{base: 'fixed', lg: 'unset'}}
+        overflow={'auto'}
+        zIndex={6}
+        bg={'inherit'}
       >
         <Flex
           align={['center', 'center', 'center', 'center']}

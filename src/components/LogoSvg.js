@@ -7,7 +7,6 @@ const LogoSvg = (props) => {
       viewBox="0 0 73 73"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
-      xmlnsXink="http://www.w3.org/1999/xlink"
     >
       <title>Group</title>
       <defs>
@@ -97,7 +96,7 @@ const LogoSvg = (props) => {
         stroke="none"
         strokeWidth="1"
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g
           id="24_MTQxMzcxNzU4NTAzNC5qcGc"

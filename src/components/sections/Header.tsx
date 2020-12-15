@@ -8,7 +8,7 @@ const MenuItems = (props: any) => {
   return (
     <Text
       mb={{base: isLast ? 0 : 8, lg: 0}}
-      mr={{base: 0, sm: isLast ? 0 : 8}}
+      mr={{base: 0, lg: isLast ? 0 : 8}}
       display="block"
       {...rest}
     >
@@ -54,10 +54,11 @@ const Header = (props: any) => {
       w="100%"
       // mb={8}
       p={8}
-      bg={['primary.500', 'primary.500', 'transparent', 'transparent']}
+      // bg={['primary.500', 'primary.500', 'transparent', 'transparent']}
       borderBottomColor="rgba(255, 255, 255, 0.4)"
       borderBottomStyle="solid"
       borderBottomWidth="1px"
+      bg={'inherit'}
       {...props}
     >
       <Flex align="center">
@@ -71,7 +72,14 @@ const Header = (props: any) => {
 
       <Box
         display={{base: show ? 'block' : 'none', lg: 'block'}}
-        flexBasis={{base: '100%', lg: 'auto'}}
+        top={{base: '5em', lg: 'unset'}}
+        left={{base: '0', lg: 'unset'}}
+        bottom={{base: '0', lg: 'unset'}}
+        right={{base: '0', lg: 'unset'}}
+        position={{base: 'fixed', lg: 'unset'}}
+        overflow={'auto'}
+        zIndex={6}
+        bg={'inherit'}
       >
         <Flex
           align={['center', 'center', 'center', 'center']}
