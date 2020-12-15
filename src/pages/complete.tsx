@@ -7,7 +7,7 @@ const Complete = () => (
   <Layout
     height="100vh"
     overflow="scroll"
-    lightColor={'orange.100'}
+    lightColor={'orange.200'}
     darkColor={'purple.500'}
   >
     <Header />
