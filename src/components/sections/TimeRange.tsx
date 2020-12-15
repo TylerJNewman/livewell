@@ -1,13 +1,5 @@
 import React from 'react'
-import {
-  Box,
-  Center,
-  Flex,
-  Heading,
-  Stack,
-  Wrap,
-  WrapItem,
-} from '@chakra-ui/react'
+import {Flex, Heading, Wrap, WrapItem} from '@chakra-ui/react'
 import Link from 'next/link'
 import OptionsWrapper from '../ui/OptionsWrapper'
 
