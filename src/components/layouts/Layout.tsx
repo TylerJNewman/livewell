@@ -14,7 +14,6 @@ export const Layout = (props: FlexProps) => {
       direction="column"
       alignItems="center"
       justifyContent="flex-start"
-      maxW={{xl: '1200px'}}
       m="0 auto"
       bg={bgColor[colorMode]}
       color={color[colorMode]}

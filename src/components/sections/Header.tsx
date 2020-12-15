@@ -83,7 +83,7 @@ const Header = (props) => {
           <MenuItems to="/pricing">Pricing </MenuItems>
           <MenuItems to="/signup" isLast>
             <Button size="sm" rounded="md">
-              Create Account
+              Sign In
             </Button>
           </MenuItems>
         </Flex>

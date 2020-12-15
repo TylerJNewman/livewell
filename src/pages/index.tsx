@@ -7,10 +7,11 @@ const Index = () => (
   <Layout height="100vh">
     <Header />
     <Hero
-      title="Launding Page Title Here"
-      subtitle="This is the subheader section where you describe the basic benefits of your product"
-      image="https://source.unsplash.com/collection/404339/800x600"
-      ctaText="Create your account now"
+      title="Become the Best You"
+      subtitle="Our app-based program applies principles of modern science to make your body and mind better."
+      svg="/girl.svg"
+      image="/sands.jpg"
+      ctaText="Try for free"
       ctaLink="/signup"
     />
   </Layout>
