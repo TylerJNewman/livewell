@@ -1,52 +1,31 @@
+import React from 'react'
+import {CheckCircleIcon, LinkIcon} from '@chakra-ui/icons'
 import {
-  Link as ChakraLink,
-  Text,
   Code,
   List,
-  ListIcon,
   ListItem,
+  ListIcon,
+  Text,
+  Link as ChakraLink,
 } from '@chakra-ui/react'
-import {CheckCircleIcon, LinkIcon} from '@chakra-ui/icons'
-
-import {Hero} from '../components/Hero'
-import {Container} from '../components/Container'
-import {Main} from '../components/Main'
-import {DarkModeSwitch} from '../components/DarkModeSwitch'
-import {CTA} from '../components/CTA'
-import {Footer} from '../components/Footer'
+import {CTA} from 'src/components/CTA'
+import {DarkModeSwitch} from 'src/components/DarkModeSwitch'
+import Container from 'src/components/layouts/Layout'
+import {Main} from 'src/components/Main'
+import Footer from 'src/components/sections/Footer'
+// import {Hero} from 'src/components/Hero'
+import Hero from 'src/components/sections/Hero'
 
 const Index = () => (
   <Container height="100vh">
-    <Hero title={'livewell.ai'} />
-    <Main>
-      <Text>
-        Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code> +{' '}
-        <Code>typescript</Code>.
-      </Text>
-
-      <List spacing={3} my={0}>
-        <ListItem>
-          <ListIcon as={CheckCircleIcon} color="orange" />
-          <ChakraLink
-            isExternal
-            href="https://chakra-ui.com"
-            flexGrow={1}
-            mr={2}
-          >
-            Chakra UI <LinkIcon />
-          </ChakraLink>
-        </ListItem>
-        <ListItem>
-          <ListIcon as={CheckCircleIcon} color="orange" />
-          <ChakraLink isExternal href="https://nextjs.org" flexGrow={1} mr={2}>
-            Next.js <LinkIcon />
-          </ChakraLink>
-        </ListItem>
-      </List>
-    </Main>
-
+    <Hero
+      title="Build this rad landing page from scratch"
+      subtitle="This is the subheader section where you describe the basic benefits of your product"
+      image="https://source.unsplash.com/collection/404339/800x600"
+      ctaText="Create your account now"
+      ctaLink="/signup"
+    />
     <DarkModeSwitch />
-    {/* <CTA /> */}
   </Container>
 )
 
