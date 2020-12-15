@@ -9,6 +9,7 @@ import {
   Text,
 } from '@chakra-ui/react'
 import Link from 'next/link'
+import TrainingWrapper from '../ui/TrainingWrapper'
 
 const title = `World's Greatest Stetch`
 const desc = `The World’s Greatest Stretch lengthens and strengthens three key areas–the ankles, hips, and thoracic spine. It’s a great movement to do throughout the day because it targets so many muscles in a relatively short period–hip flexors, hamstrings, adductors, glutes, calves, quads, thoracic spine, chest, shoulders, lower back, and obliques. Ease into the movement and move fluidly through the positions. Don't worry if you can't get into the full range of motion just yet.. we will get there with consistent practice. Doing The World's Greatest Stretch for one or two minutes for every hour sitting down will yield incredible results over time.`
@@ -64,9 +65,11 @@ function Feature({title, desc}: Props) {
 
 const TrainingView = () => {
   return (
-    <Box maxW="1165px">
-      <Feature title={title} desc={desc} />
-    </Box>
+    <TrainingWrapper>
+      <Box maxW="1165px">
+        <Feature title={title} desc={desc} />
+      </Box>
+    </TrainingWrapper>
   )
 }
 
