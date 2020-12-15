@@ -9,22 +9,12 @@ import {
   Link as ChakraLink,
 } from '@chakra-ui/react'
 
-interface Props {
-  title: string
-  subtitle: string
-  image: string
-  ctaText: string
-  ctaLink: string
-}
+const title = 'Become the Best You'
+const subtitle =
+  'Our app-based program applies principles of modern science to make your body and mind better.'
+const image = '/sands.jpg'
 
-export default function Hero({
-  title,
-  subtitle,
-  image,
-  ctaLink,
-  ctaText,
-  ...rest
-}: Props) {
+export default function Hero() {
   return (
     <Flex
       align="center"
@@ -33,7 +23,6 @@ export default function Hero({
       wrap="nowrap"
       minH="60vh"
       px={8}
-      {...rest}
     >
       <Stack
         spacing={4}
@@ -60,9 +49,9 @@ export default function Hero({
         >
           {subtitle}
         </Heading>
-        <ChakraLink isExternal href={ctaLink} flexGrow={1} mx={2}>
-          <Button width="100%" variant="solid" colorScheme="gray">
-            {ctaText}
+        <ChakraLink href="/" flexGrow={1} mx={2}>
+          <Button size="lg" colorScheme="orange">
+            Try for free
           </Button>
         </ChakraLink>
       </Stack>
@@ -71,13 +60,4 @@ export default function Hero({
       </Box>
     </Flex>
   )
-}
-
-Hero.defaultProps = {
-  title: 'React landing page with Chakra UI',
-  subtitle:
-    'This is the subheader section where you describe the basic benefits of your product',
-  image: 'https://source.unsplash.com/collection/404339/800x600',
-  ctaText: 'Create your account now',
-  ctaLink: '/signup',
 }

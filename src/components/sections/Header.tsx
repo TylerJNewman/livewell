@@ -57,10 +57,7 @@ const Header = (props) => {
       {...props}
     >
       <Flex align="center">
-        <Logo
-          w="100px"
-          color={['white', 'white', 'primary.500', 'primary.500']}
-        />
+        <Logo color={['white', 'white', 'primary.500', 'primary.500']} />
       </Flex>
 
       <Box display={{base: 'block', md: 'none'}} onClick={toggleMenu}>
@@ -77,13 +74,12 @@ const Header = (props) => {
           direction={['column', 'row', 'row', 'row']}
           pt={[4, 4, 0, 0]}
         >
-          <MenuItems to="/">Home</MenuItems>
-          <MenuItems to="/how">How It works </MenuItems>
-          <MenuItems to="/faetures">Features </MenuItems>
-          <MenuItems to="/pricing">Pricing </MenuItems>
-          <MenuItems to="/signup" isLast>
-            <Button size="sm" rounded="md">
-              Sign In
+          <MenuItems to="/signup">
+            <Text fontSize="2xl">Sign In</Text>
+          </MenuItems>
+          <MenuItems to="/" isLast>
+            <Button size="lg" colorScheme="orange">
+              Try for free
             </Button>
           </MenuItems>
         </Flex>
