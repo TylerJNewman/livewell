@@ -1,13 +1,6 @@
 import React from 'react'
-import {
-  Box,
-  Button,
-  Flex,
-  Image,
-  Heading,
-  Stack,
-  Link as ChakraLink,
-} from '@chakra-ui/react'
+import {Box, Button, Flex, Image, Heading, Stack} from '@chakra-ui/react'
+import Link from 'next/link'
 
 const header = 'Recover in Minutes'
 const title = 'Practice the Best You'
@@ -60,11 +53,11 @@ export default function Hero() {
         >
           {subtitle}
         </Heading>
-        <ChakraLink href="/" flexGrow={1} mx={2}>
+        <Link href="/app">
           <Button size="lg" colorScheme="orange">
             Try for free
           </Button>
-        </ChakraLink>
+        </Link>
       </Stack>
       <Box w={{base: '80%', sm: '60%', md: '50%'}} mb={{base: 12, md: 0}}>
         <Image src={image} size="100%" rounded="1rem" shadow="2xl" />
