@@ -4,7 +4,12 @@ import Header from 'src/components/sections/Header'
 import TimeRange from 'src/components/sections/TimeRange'
 
 const Index = () => (
-  <Layout overflow="scroll" lightColor={'cyan.400'} darkColor={'purple'}>
+  <Layout
+    overflow="scroll"
+    height="100vh"
+    lightColor={'cyan.400'}
+    darkColor={'purple'}
+  >
     <Header />
     <TimeRange />
   </Layout>
