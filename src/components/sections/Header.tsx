@@ -7,7 +7,7 @@ const MenuItems = (props: any) => {
   const {children, isLast, to = '/', ...rest} = props
   return (
     <Text
-      mb={{base: isLast ? 0 : 8, md: 0}}
+      mb={{base: isLast ? 0 : 8, xl: 0}}
       mr={{base: 0, sm: isLast ? 0 : 8}}
       display="block"
       {...rest}
@@ -56,6 +56,9 @@ const Header = (props: any) => {
       p={8}
       bg={['primary.500', 'primary.500', 'transparent', 'transparent']}
       maxW="1200px"
+      borderBottomColor="rgba(255, 255, 255, 0.4)"
+      borderBottomStyle="solid"
+      borderBottomWidth="1px"
       {...props}
     >
       <Flex align="center">
@@ -63,18 +66,18 @@ const Header = (props: any) => {
       </Flex>
       {/* <DarkModeSwitch /> */}
 
-      <Box display={{base: 'block', md: 'none'}} onClick={toggleMenu}>
+      <Box display={{base: 'block', xl: 'none'}} onClick={toggleMenu}>
         {show ? <CloseIcon /> : <MenuIcon />}
       </Box>
 
       <Box
-        display={{base: show ? 'block' : 'none', md: 'block'}}
-        flexBasis={{base: '100%', md: 'auto'}}
+        display={{base: show ? 'block' : 'none', xl: 'block'}}
+        flexBasis={{base: '100%', xl: 'auto'}}
       >
         <Flex
           align={['center', 'center', 'center', 'center']}
           justify={['center', 'center', 'flex-end', 'flex-end']}
-          direction={['column', 'column', 'row', 'row']}
+          direction={['column', 'column', 'column', 'row']}
           pt={[4, 4, 0, 0]}
         >
           <MenuItems to="/signup">
