@@ -1,9 +1,10 @@
 import React from 'react'
 import Link from 'next/link'
-import {Box, Flex, Text, Button, Stack, PseudoBox} from '@chakra-ui/react'
+import {Box, Flex, Text, Button} from '@chakra-ui/react'
 import Logo from '../ui/Logo'
+import {DarkModeSwitch} from '../DarkModeSwitch'
 
-const MenuItems = (props) => {
+const MenuItems = (props: any) => {
   const {children, isLast, to = '/', ...rest} = props
   return (
     <Text
@@ -39,7 +40,7 @@ const MenuIcon = () => (
   </svg>
 )
 
-const Header = (props) => {
+const Header = (props: any) => {
   const [show, setShow] = React.useState(false)
   const toggleMenu = () => setShow(!show)
 
@@ -53,12 +54,11 @@ const Header = (props) => {
       mb={8}
       p={8}
       bg={['primary.500', 'primary.500', 'transparent', 'transparent']}
-      color={['white', 'white', 'primary.700', 'primary.700']}
       maxW="1200px"
       {...props}
     >
       <Flex align="center">
-        <Logo color={['white', 'white', 'primary.500', 'primary.500']} />
+        <Logo />
       </Flex>
 
       <Box display={{base: 'block', md: 'none'}} onClick={toggleMenu}>
@@ -75,6 +75,9 @@ const Header = (props) => {
           direction={['column', 'row', 'row', 'row']}
           pt={[4, 4, 0, 0]}
         >
+          <MenuItems to="/signup">
+            <DarkModeSwitch />
+          </MenuItems>
           <MenuItems to="/signup">
             <Text fontSize="2xl">Sign In</Text>
           </MenuItems>

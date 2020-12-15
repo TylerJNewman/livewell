@@ -1,12 +1,12 @@
 import React from 'react'
-import {Box, Text, Image, HStack} from '@chakra-ui/react'
-
-const logo = '/logo.png'
+import {Box, Text, HStack, Icon} from '@chakra-ui/react'
+import LogoSvg from 'src/components/LogoSvg'
 
 export default function Logo() {
   return (
     <HStack spacing="16px">
-      <Image boxSize="1.875rem" src={logo} />
+      {/* <Image boxSize="1.875rem" src={logo} /> */}
+      <Icon as={LogoSvg} boxSize="1.875rem" />
       <Box>
         <Text fontSize="3xl" fontWeight="bold">
           livewell.ai
