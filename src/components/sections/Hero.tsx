@@ -9,9 +9,10 @@ import {
   Link as ChakraLink,
 } from '@chakra-ui/react'
 
-const title = 'Become the Best You'
+const header = 'Recover in Minutes'
+const title = 'Practice the Best You'
 const subtitle =
-  'Our app-based program applies principles of modern science to make your body and mind better.'
+  'Our app-based program applies principles of modern science to make your body and mind operate in peak condition.'
 const image = '/sands.jpg'
 
 export default function Hero() {
@@ -22,13 +23,23 @@ export default function Hero() {
       direction={{base: 'column-reverse', md: 'row'}}
       wrap="nowrap"
       minH="60vh"
+      maxW="1200px"
       px={8}
+      mt={175}
     >
       <Stack
         spacing={4}
         w={{base: '80%', md: '40%'}}
         align={['center', 'center', 'flex-start', 'flex-start']}
       >
+        <Heading
+          as="h3"
+          size="sm"
+          color="primary.800"
+          textAlign={['center', 'center', 'left', 'left']}
+        >
+          {header}
+        </Heading>
         <Heading
           as="h1"
           size="xl"
