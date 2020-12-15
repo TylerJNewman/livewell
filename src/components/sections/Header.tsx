@@ -82,7 +82,7 @@ const Header = (props: any) => {
             <Text fontSize="2xl">Sign In</Text>
           </MenuItems>
           <MenuItems to="/app" isLast>
-            <Button size="lg" colorScheme="orange" variant="solid">
+            <Button size="lg" colorScheme="gray" variant="solid">
               Contact Us
             </Button>
           </MenuItems>
