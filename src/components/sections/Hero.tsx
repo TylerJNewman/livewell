@@ -1,6 +1,13 @@
 import React from 'react'
-import Link from 'next/link'
-import {Box, Button, Flex, Image, Heading, Stack, Text} from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Flex,
+  Image,
+  Heading,
+  Stack,
+  Link as ChakraLink,
+} from '@chakra-ui/react'
 
 interface Props {
   title: string
@@ -53,28 +60,11 @@ export default function Hero({
         >
           {subtitle}
         </Heading>
-        <Link href={ctaLink}>
-          <Button
-            variantColor="primary"
-            borderRadius="8px"
-            py="4"
-            px="4"
-            lineHeight="1"
-            size="md"
-            rightIcon="chevron-right"
-          >
+        <ChakraLink isExternal href={ctaLink} flexGrow={1} mx={2}>
+          <Button width="100%" variant="solid" colorScheme="gray">
             {ctaText}
           </Button>
-        </Link>
-        <Text
-          fontSize="xs"
-          mt={2}
-          textAlign="center"
-          color="primary.800"
-          opacity="0.6"
-        >
-          No credit card required.
-        </Text>
+        </ChakraLink>
       </Stack>
       <Box w={{base: '80%', sm: '60%', md: '50%'}} mb={{base: 12, md: 0}}>
         {/* TODO: Make this change every X secs */}
