@@ -2,13 +2,12 @@ import React from 'react'
 import Link from 'next/link'
 import {Box, Flex, Text, Button} from '@chakra-ui/react'
 import Logo from '../ui/Logo'
-import {DarkModeSwitch} from '../DarkModeSwitch'
 
 const MenuItems = (props: any) => {
   const {children, isLast, to = '/', ...rest} = props
   return (
     <Text
-      mb={{base: isLast ? 0 : 8, sm: 0}}
+      mb={{base: isLast ? 0 : 8, md: 0}}
       mr={{base: 0, sm: isLast ? 0 : 8}}
       display="block"
       {...rest}
@@ -71,13 +70,10 @@ const Header = (props: any) => {
       >
         <Flex
           align={['center', 'center', 'center', 'center']}
-          justify={['center', 'space-between', 'flex-end', 'flex-end']}
-          direction={['column', 'row', 'row', 'row']}
+          justify={['center', 'center', 'flex-end', 'flex-end']}
+          direction={['column', 'column', 'row', 'row']}
           pt={[4, 4, 0, 0]}
         >
-          <MenuItems to="/signup">
-            <DarkModeSwitch />
-          </MenuItems>
           <MenuItems to="/signup">
             <Text fontSize="2xl">Sign In</Text>
           </MenuItems>
