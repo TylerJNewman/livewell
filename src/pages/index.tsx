@@ -4,7 +4,7 @@ import LandingHeader from 'src/components/sections/LandingHeader'
 import Hero from 'src/components/sections/Hero'
 
 const Index = () => (
-  <Layout height="100vh">
+  <Layout height="100vh" overflow="scroll">
     <LandingHeader />
     <Hero />
   </Layout>

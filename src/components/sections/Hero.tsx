@@ -18,7 +18,7 @@ export default function Hero() {
       minH="60vh"
       maxW="1200px"
       px={8}
-      mt={50}
+      my={50}
     >
       <Stack
         spacing={4}
