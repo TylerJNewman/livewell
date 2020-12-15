@@ -6,18 +6,18 @@ import {
   ListIcon,
   ListItem,
 } from '@chakra-ui/react'
-import { CheckCircleIcon, LinkIcon } from '@chakra-ui/icons'
+import {CheckCircleIcon, LinkIcon} from '@chakra-ui/icons'
 
-import { Hero } from '../components/Hero'
-import { Container } from '../components/Container'
-import { Main } from '../components/Main'
-import { DarkModeSwitch } from '../components/DarkModeSwitch'
-import { CTA } from '../components/CTA'
-import { Footer } from '../components/Footer'
+import {Hero} from '../components/Hero'
+import {Container} from '../components/Container'
+import {Main} from '../components/Main'
+import {DarkModeSwitch} from '../components/DarkModeSwitch'
+import {CTA} from '../components/CTA'
+import {Footer} from '../components/Footer'
 
 const Index = () => (
   <Container height="100vh">
-    <Hero />
+    <Hero title={'livewell.ai'} />
     <Main>
       <Text>
         Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code> +{' '}
@@ -26,7 +26,7 @@ const Index = () => (
 
       <List spacing={3} my={0}>
         <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
+          <ListIcon as={CheckCircleIcon} color="orange" />
           <ChakraLink
             isExternal
             href="https://chakra-ui.com"
@@ -37,7 +37,7 @@ const Index = () => (
           </ChakraLink>
         </ListItem>
         <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
+          <ListIcon as={CheckCircleIcon} color="orange" />
           <ChakraLink isExternal href="https://nextjs.org" flexGrow={1} mr={2}>
             Next.js <LinkIcon />
           </ChakraLink>
@@ -46,10 +46,7 @@ const Index = () => (
     </Main>
 
     <DarkModeSwitch />
-    <Footer>
-      <Text>Next ❤️ Chakra</Text>
-    </Footer>
-    <CTA />
+    {/* <CTA /> */}
   </Container>
 )
 
