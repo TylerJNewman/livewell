@@ -8,7 +8,7 @@ export default function Logo() {
       {/* <Image boxSize="1.875rem" src={logo} /> */}
       <Icon as={LogoSvg} boxSize="1.875rem" />
       <Box>
-        <Text fontSize="3xl" fontWeight="bold">
+        <Text fontSize="2xl" fontWeight="bold">
           livewell.ai
         </Text>
       </Box>
