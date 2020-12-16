@@ -46,56 +46,55 @@ const Header = (props: any) => {
   const toggleMenu = () => setShow(!show)
 
   return (
-    <Flex
-      as="nav"
-      align="center"
-      justify="space-between"
-      wrap="wrap"
-      w="100%"
-      // mb={8}
-      p={8}
-      mb="10px"
-      // bg={['primary.500', 'primary.500', 'transparent', 'transparent']}
-      bg={'inherit'}
-      {...props}
-    >
-      <Flex align="center">
-        <Logo />
-      </Flex>
-      {/* <DarkModeSwitch /> */}
-
-      <Box display={{base: 'block', lg: 'none'}} onClick={toggleMenu}>
-        {show ? <CloseIcon /> : <MenuIcon />}
-      </Box>
-
-      <Box
-        display={{base: show ? 'block' : 'none', lg: 'block'}}
-        top={{base: '100px', lg: 'unset'}}
-        left={{base: '0', lg: 'unset'}}
-        bottom={{base: '0', lg: 'unset'}}
-        right={{base: '0', lg: 'unset'}}
-        position={{base: 'fixed', lg: 'unset'}}
-        overflow={'auto'}
-        zIndex={6}
+    <Box as="nav" mb={0} width="100%" bg={'inherit'}>
+      <Flex
+        align="center"
+        justify="space-between"
+        wrap="wrap"
+        w="100%"
+        p={8}
         bg={'inherit'}
+        m={0}
+        {...props}
       >
-        <Flex
-          align={['center', 'center', 'center', 'center']}
-          justify={['center', 'center', 'center', 'flex-end']}
-          direction={['column', 'column', 'column', 'row']}
-          pt={[4, 4, 4, 0]}
-        >
-          <MenuItems to="/signup">
-            <Text fontSize="2xl">Sign In</Text>
-          </MenuItems>
-          <MenuItems to="/app" isLast>
-            <Button size="lg" colorScheme="gray" variant="solid">
-              Contact Us
-            </Button>
-          </MenuItems>
+        <Flex align="center">
+          <Logo />
         </Flex>
-      </Box>
-    </Flex>
+        {/* <DarkModeSwitch /> */}
+
+        <Box display={{base: 'block', lg: 'none'}} onClick={toggleMenu}>
+          {show ? <CloseIcon /> : <MenuIcon />}
+        </Box>
+
+        <Box
+          display={{base: show ? 'block' : 'none', lg: 'block'}}
+          top={{base: '100px', lg: 'unset'}}
+          left={{base: '0', lg: 'unset'}}
+          bottom={{base: '0', lg: 'unset'}}
+          right={{base: '0', lg: 'unset'}}
+          position={{base: 'fixed', lg: 'unset'}}
+          overflow={'auto'}
+          zIndex={6}
+          bg={'inherit'}
+        >
+          <Flex
+            align={['center', 'center', 'center', 'center']}
+            justify={['center', 'center', 'center', 'flex-end']}
+            direction={['column', 'column', 'column', 'row']}
+            pt={[4, 4, 4, 0]}
+          >
+            <MenuItems to="/signup">
+              <Text fontSize="2xl">Sign In</Text>
+            </MenuItems>
+            <MenuItems to="/app" isLast>
+              <Button size="lg" colorScheme="gray" variant="solid">
+                Contact Us
+              </Button>
+            </MenuItems>
+          </Flex>
+        </Box>
+      </Flex>
+    </Box>
   )
 }
 
