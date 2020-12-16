@@ -55,9 +55,6 @@ const Header = (props: any) => {
       // mb={8}
       p={8}
       // bg={['primary.500', 'primary.500', 'transparent', 'transparent']}
-      borderBottomColor="rgba(255, 255, 255, 0.4)"
-      borderBottomStyle="solid"
-      borderBottomWidth="1px"
       bg={'inherit'}
       {...props}
     >

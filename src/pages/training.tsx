@@ -6,7 +6,7 @@ import TrainingView from 'src/components/sections/TrainingView'
 const Training = () => (
   <Layout
     overflow="scroll"
-    height="100vh"
+    h="100vh"
     lightColor={'teal.300'}
     darkColor={'red.300'}
   >

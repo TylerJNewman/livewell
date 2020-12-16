@@ -8,7 +8,7 @@ const TrainingWrapper = (props: FlexProps) => {
       pb="97px"
       w="100%"
       h="100%"
-      justify="center"
+      // justify="center"
       align="center"
     >
       {/* <Flex
