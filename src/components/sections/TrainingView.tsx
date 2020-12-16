@@ -41,7 +41,7 @@ function Feature({title, desc}: Props) {
         <Text mt={4} w="100%">
           {desc}
         </Text>
-        <Center>
+        <Center mb="100px">
           <Link href="/complete">
             <Button
               width={['100%', '100%', '100%', 'auto']}
@@ -64,9 +64,9 @@ function Feature({title, desc}: Props) {
 
 const TrainingView = () => {
   return (
-    <Box maxW="1165px" as="main" pb="100px">
+    <Flex maxW="1165px" as="main" pt="0px" mt="0px">
       <Feature title={title} desc={desc} />
-    </Box>
+    </Flex>
   )
 }
 

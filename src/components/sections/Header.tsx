@@ -54,6 +54,7 @@ const Header = (props: any) => {
       w="100%"
       // mb={8}
       p={8}
+      mb="10px"
       // bg={['primary.500', 'primary.500', 'transparent', 'transparent']}
       bg={'inherit'}
       {...props}
