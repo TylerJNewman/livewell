@@ -10,7 +10,7 @@ const image = '/sands.jpg'
 
 export default function Hero() {
   return (
-    <Box mt={[-4, 50]} mb={10}>
+    <Box mt={[-4, 50]} mb="100px" as="main">
       <Flex
         align="center"
         justify={{base: 'center', md: 'space-around', xl: 'space-between'}}

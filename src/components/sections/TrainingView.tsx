@@ -65,7 +65,7 @@ function Feature({title, desc}: Props) {
 
 const TrainingView = () => {
   return (
-    <Box maxW="1165px">
+    <Box maxW="1165px" as="main" pb="100px">
       <Feature title={title} desc={desc} />
     </Box>
   )
