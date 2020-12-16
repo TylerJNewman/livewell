@@ -54,9 +54,9 @@ export default function Home() {
         maxW="1200px"
         px={8}
       >
-        <Heading as="h1" size="xl" fontWeight="bold" display="block">
+        {/* <Heading as="h1" size="xl" fontWeight="bold" display="block">
           {title}
-        </Heading>
+        </Heading> */}
         <Wrap direction="row" px={8} py={8} justify="center">
           {options.map((minutes) => (
             <Option minutes={minutes} />
