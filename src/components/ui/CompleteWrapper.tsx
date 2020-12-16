@@ -1,10 +1,11 @@
 import {Flex, FlexProps} from '@chakra-ui/react'
 import React from 'react'
 
-const OptionsWrapper = (props: FlexProps) => {
+const CompleteWrapper = (props: FlexProps) => {
   return (
     <Flex
       // pt={['80px', '116px']}
+      mt={'1em'}
       pb="97px"
       px="10px"
       w="100%"
@@ -27,4 +28,4 @@ const OptionsWrapper = (props: FlexProps) => {
   )
 }
 
-export default OptionsWrapper
+export default CompleteWrapper
