@@ -3,13 +3,12 @@ import React from 'react'
 import Layout from 'src/components/layouts/Layout'
 import Header from 'src/components/sections/Header'
 import TimeRange from 'src/components/sections/TimeRange'
-import ErrorPage from 'next/error'
 
 const Index = () => {
   const router = useRouter()
   const {category} = router.query
 
-  if (typeof category !== 'string') return <ErrorPage statusCode={404} />
+  if (typeof category !== 'string') return <></>
 
   return (
     <Layout

@@ -3,14 +3,10 @@ import {Center, Flex, Heading, Wrap, WrapItem} from '@chakra-ui/react'
 import Link from 'next/link'
 import OptionsWrapper from '../ui/OptionsWrapper'
 
-const capitalize = ([first, ...rest]: string, lowerRest = false) =>
-  first.toUpperCase() +
-  (lowerRest ? rest.join('').toLowerCase() : rest.join(''))
-
 const title = 'I want'
 const options = [
-  {content: 'body', color: 'yellow.400'},
-  {content: 'mind', color: 'orange.400'},
+  {content: 'Body', color: 'yellow.400'},
+  {content: 'Mind', color: 'orange.400'},
 ]
 interface Props {
   content: string
@@ -33,7 +29,7 @@ const Option = ({content, color}: Props) => {
       >
         <Center w="100%" h="100%">
           <Heading as="h2" size="xl" color="white">
-            {capitalize(content)}
+            {content}
           </Heading>
         </Center>
       </WrapItem>
