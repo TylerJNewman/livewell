@@ -15,22 +15,21 @@ export type ResolverContext = {
 }
 
 const httpLink = PrismicLink({
-  uri: process.env.PRISMIC_GRAPHQL_ENDPOINT,
+  uri: process.env.PRISMIC_GRAPHQL_ENDPOINT || '',
   accessToken: process.env.PRISMIC_ACCESS_TOKEN,
 })
 
-function createIsomorphLink(context: ResolverContext = {}) {
-  // if (typeof window === 'undefined') {
-  //   const {SchemaLink} = require('@apollo/client/link/schema')
-  //   const {schema} = require('./schema')
-  //   return new SchemaLink({schema, context})
-  // } else {
-  //   return httpLink
-  // }
-  return httpLink
-}
+// function createIsomorphLink(context: ResolverContext = {}) {
+//   if (typeof window === 'undefined') {
+//     const {SchemaLink} = require('@apollo/client/link/schema')
+//     const {schema} = require('./schema')
+//     return new SchemaLink({schema, context})
+//   } else {
+//     return httpLink
+//   }
+// }
 
-function createApolloClient(context?: ResolverContext) {
+function createApolloClient() {
   return new ApolloClient({
     headers: {
       'Content-Type': 'application/json',
@@ -38,18 +37,13 @@ function createApolloClient(context?: ResolverContext) {
       'Access-Control-Allow-Credentials': 'true',
     },
     ssrMode: typeof window === 'undefined',
-    link: createIsomorphLink(context),
+    link: httpLink,
     cache: new InMemoryCache(),
   })
 }
 
-export function initializeApollo(
-  initialState: any = null,
-  // Pages with Next.js data fetching methods, like `getStaticProps`, can send
-  // a custom context which will be used by `SchemaLink` to server render pages
-  context?: ResolverContext,
-) {
-  const _apolloClient = apolloClient ?? createApolloClient(context)
+export function initializeApollo(initialState: any = null) {
+  const _apolloClient = apolloClient ?? createApolloClient()
 
   // If your page has Next.js data fetching methods that use Apollo Client, the initial state
   // get hydrated here
