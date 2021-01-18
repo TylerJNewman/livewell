@@ -1,71 +1,70 @@
 import React from 'react'
-import {
-  AspectRatio,
-  Box,
-  Button,
-  Center,
-  Flex,
-  Heading,
-  Text,
-} from '@chakra-ui/react'
-import Link from 'next/link'
-
-const title = `World's Greatest Stretch`
-const desc = `The World’s Greatest Stretch lengthens and strengthens three key areas–the ankles, hips, and thoracic spine. It’s a great movement to do throughout the day because it targets so many muscles in a relatively short period–hip flexors, hamstrings, adductors, glutes, calves, quads, thoracic spine, chest, shoulders, lower back, and obliques. Ease into the movement and move fluidly through the positions. Don't worry if you can't get into the full range of motion just yet.. we will get there with consistent practice. Doing The World's Greatest Stretch for one or two minutes for every hour sitting down will yield incredible results over time.`
+import {Center, Flex, Spinner} from '@chakra-ui/react'
+import {gql, useQuery} from '@apollo/client'
+import Feature from '../ui/Feature'
 
 interface Props {
-  title: string
-  desc: string
+  minutes: string
+  category: string
 }
 
-function Feature({title, desc}: Props) {
-  return (
-    <Box px={['0px', '0px', '50px', '50px']}>
-      <AspectRatio ratio={1065 / 600}>
-        <iframe
-          title="naruto"
-          src="https://www.youtube.com/embed/QhBnZ6NPOY0"
-          allowFullScreen
+export const TRAINING_DATA = gql`
+  query Training($input: WhereTraining!) {
+    allTrainings(where: $input) {
+      edges {
+        node {
+          category
+          minutes
+          videolink1 {
+            ... on _ExternalLink {
+              url
+            }
+          }
+          title
+          description
+        }
+      }
+    }
+  }
+`
+
+const TrainingView = ({minutes, category}: Props) => {
+  const input = {category, minutes}
+
+  if (!minutes || !category) return <p></p>
+
+  const {data, loading, error} = useQuery(TRAINING_DATA, {
+    variables: {
+      input,
+    },
+  })
+
+  const training = data?.allTrainings?.edges[0]?.node
+
+  if (loading)
+    return (
+      <Center h="70%">
+        <Spinner
+          thickness="4px"
+          speed="0.65s"
+          emptyColor="gray.200"
+          color="blue.500"
+          size="xl"
         />
-      </AspectRatio>
-      <Flex
-        justify="center"
-        align="center"
-        direction="column"
-        px={['15px', '30px', '0px']}
-        mt={['25px', '25px', '45px']}
-      >
-        <Heading as="h2" size="2xl" w="100%">
-          {title}
-        </Heading>
-        <Text mt={4} w="100%">
-          {desc}
-        </Text>
-        <Center mb="100px">
-          <Link href="/complete">
-            <Button
-              width={['100%', '100%', '100%', 'auto']}
-              variant="solid"
-              mt={8}
-              colorScheme="gray"
-              size="lg"
-              px={16}
-            >
-              <Heading as="h4" size="md" letterSpacing=".08em">
-                COMPLETE
-              </Heading>
-            </Button>
-          </Link>
-        </Center>
-      </Flex>
-    </Box>
-  )
-}
+      </Center>
+    )
+  if (error) return <p>ERROR</p>
+  if (!training) return <p>Not found</p>
 
-const TrainingView = () => {
+  const {title, description, videolink1} = training
+
   return (
     <Flex maxW="1165px" as="main" pt="0px" mt="0px">
-      <Feature title={title} desc={desc} />
+      <Feature
+        title={title}
+        description={description}
+        videolink1={videolink1}
+      />
     </Flex>
   )
 }

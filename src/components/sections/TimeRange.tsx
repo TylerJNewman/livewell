@@ -7,11 +7,15 @@ const title = 'I want'
 const options = ['1', '2', '15']
 interface Props {
   minutes: string
+  category: string
 }
 
-const Option = ({minutes}: Props) => {
+const Option = ({minutes, category}: Props) => {
   return (
-    <Link href="/training" key={minutes}>
+    <Link
+      href={`/training/?category=${category}&minutes=${minutes}`}
+      key={minutes}
+    >
       <WrapItem
         w={[160, 240]}
         h={[160, 240]}
@@ -42,7 +46,7 @@ const Option = ({minutes}: Props) => {
   )
 }
 
-export default function Home() {
+export default function TimeRange({category}: {category: string}) {
   // const boxSize = useBreakpointValue({base: '160px', md: '240px'})
 
   return (
@@ -59,7 +63,7 @@ export default function Home() {
         </Heading>
         <Wrap direction="row" px={8} py={8} justify="center">
           {options.map((minutes) => (
-            <Option minutes={minutes} />
+            <Option key={minutes} minutes={minutes} category={category} />
           ))}
         </Wrap>
       </Flex>

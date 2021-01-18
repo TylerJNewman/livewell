@@ -83,11 +83,11 @@ const Header = (props: any) => {
             direction={['column', 'column', 'column', 'row']}
             pt={[4, 4, 4, 0]}
           >
-            <MenuItems to="/signup">
+            {/* <MenuItems to="/signup">
               <Text fontSize="2xl">Sign In</Text>
-            </MenuItems>
+            </MenuItems> */}
             <MenuItems to="/app" isLast>
-              <Button size="lg" colorScheme="gray" variant="solid">
+              <Button size="lg" variant="solid">
                 Contact Us
               </Button>
             </MenuItems>
