@@ -2,10 +2,10 @@ import React from 'react'
 import {Box, Button, Flex, Image, Heading, Stack} from '@chakra-ui/react'
 import Link from 'next/link'
 
-const header = 'Recover in Minutes'
-const title = 'Practice the Best You'
+const header = 'Recharge in Minutes'
+const title = 'Perform at Your Peak'
 const subtitle =
-  'Our app-based program applies principles of modern science to make your body and mind operate in peak condition.'
+  'Our app-based program provides guidance to rapidly alleviate stress and boost overall well-being.'
 const image = '/sands.jpg'
 
 export default function Hero() {

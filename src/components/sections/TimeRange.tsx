@@ -3,7 +3,7 @@ import {Flex, Heading, Wrap, WrapItem} from '@chakra-ui/react'
 import Link from 'next/link'
 import OptionsWrapper from '../ui/OptionsWrapper'
 
-const title = 'I want'
+const title = 'I have'
 const options = ['1', '2', '15']
 interface Props {
   minutes: string

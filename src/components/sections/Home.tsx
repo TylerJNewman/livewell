@@ -7,7 +7,7 @@ const capitalize = ([first, ...rest]: string, lowerRest = false) =>
   first.toUpperCase() +
   (lowerRest ? rest.join('').toLowerCase() : rest.join(''))
 
-const title = 'I want'
+const title = 'I want to recharge my...'
 const options = [
   {content: 'body', color: 'yellow.400'},
   {content: 'mind', color: 'orange.400'},
