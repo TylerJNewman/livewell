@@ -4,6 +4,7 @@ import blue from '../blue'
 import {AppProps} from 'next/app'
 import React from 'react'
 import {useApollo} from 'src/apollo'
+import '../styles.css'
 
 function MyApp({Component, pageProps}: AppProps) {
   const apolloClient = useApollo(pageProps.initialApolloState)
