@@ -13,7 +13,13 @@ import {
 import React, {useState} from 'react'
 import Layout from 'src/components/layouts/Layout'
 import {useForm} from 'react-hook-form'
-import dayjs from 'dayjs'
+import dayjs, {Dayjs} from 'dayjs'
+
+interface FormValues {
+  hour?: string | undefined
+  minute?: string | undefined
+  meridiem?: string | undefined
+}
 
 const title = 'I have to wake up at...'
 const title2 = 'If you go to bed NOW, you should wake up at...'
@@ -44,13 +50,13 @@ const sleepTime = ({hour = '1', minute = '00', meridiem = 'am'}) => {
   const fiveCycles = wakeup.subtract(90 * 5, 'minutes') // 7.5 hrs
   const fourCycles = wakeup.subtract(90 * 4, 'minutes') // 6 hrs
 
-  const format = (time: number) => time.format('h:mm A')
+  const formatTime = (time: Dayjs) => time.format('h:mm A')
 
-  return [sixCycles, fiveCycles, fourCycles].map(format)
+  return [sixCycles, fiveCycles, fourCycles].map(formatTime)
 }
 
-inteface FormProps {
-  handleSleepEstimate: () => void
+interface FormProps {
+  handleSleepEstimate: (values: FormValues) => void
 }
 
 const Form = ({handleSleepEstimate}: FormProps) => {
@@ -71,6 +77,7 @@ const Form = ({handleSleepEstimate}: FormProps) => {
   function onSubmit(values: any) {
     handleSleepEstimate(values)
   }
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <VStack
@@ -213,7 +220,7 @@ const Sleep = () => {
   const [sleepView, setSleepView] = useState(false)
   const [cycles, setCycles] = useState<string[]>([])
 
-  const handleSleepEstimate = (values: { hour?: string | undefined; minute?: string | undefined; meridiem?: string | undefined }) => {
+  const handleSleepEstimate = (values: FormValues) => {
     const _cycles = sleepTime(values)
     setCycles(_cycles)
     setSleepView(true)
