@@ -10,6 +10,7 @@ import {
   FormControl,
   Badge,
   useColorMode,
+  useToast,
 } from '@chakra-ui/react'
 import React, {useState} from 'react'
 import Layout from 'src/components/layouts/Layout'
@@ -62,6 +63,7 @@ interface FormProps {
 
 const Form = ({handleSleepEstimate}: FormProps) => {
   const {handleSubmit, errors, register} = useForm()
+  const toast = useToast()
 
   function validateHour(value: string) {
     if (!value) {
@@ -78,6 +80,26 @@ const Form = ({handleSleepEstimate}: FormProps) => {
   function onSubmit(values: any) {
     handleSleepEstimate(values)
   }
+
+  React.useEffect(() => {
+    if (errors.hour || errors.minute) {
+      const message = errors.hour ? 'time' : 'minute'
+
+      const description = (
+        <span>
+          Please make sure to choose select a <b>{message}</b> before submitting
+        </span>
+      )
+      toast({
+        title: 'An error occurred.',
+        description,
+        status: 'error',
+        duration: 2000,
+        isClosable: true,
+        position: 'top',
+      })
+    }
+  }, [errors])
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
