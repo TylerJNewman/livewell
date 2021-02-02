@@ -7,9 +7,12 @@ import {
   VStack,
   Center,
   Text,
+  FormErrorMessage,
+  FormControl,
 } from '@chakra-ui/react'
 import React, {useState} from 'react'
 import Layout from 'src/components/layouts/Layout'
+import {useForm} from 'react-hook-form'
 
 const title = 'I have to wake up at...'
 const title2 = 'If you go to bed NOW, you should wake up at...'
@@ -26,64 +29,114 @@ const minutes = initializeArrayWithRange(55, 0, 5).map((m) =>
   m.toString().padStart(2, '0'),
 )
 
-const Form = ({handleSleepEstimate}) => (
-  <VStack
-    align="center"
-    justify="center"
-    direction="column"
-    wrap="nowrap"
-    maxW="1200px"
-    px={8}
-    py={160}
-    spacing={12}
-  >
-    <Heading as="h3" size="md" fontWeight="bold" display="block">
-      {title}
-    </Heading>
-    <HStack spacing={3}>
-      <Select w="17vh" placeholder="hour" size="md">
-        {hours.map((hour) => (
-          <option key={hour} value={hour}>
-            {hour}
-          </option>
-        ))}
-      </Select>
-      <Select w="17vh" placeholder="minute" size="md">
-        {minutes.map((minute) => (
-          <option key={minute} value={minute}>
-            {minute}
-          </option>
-        ))}
-      </Select>
-      <Select w="17vh" size="md">
-        <option value="am">AM</option>
-        <option value="pm">PM</option>
-      </Select>
-    </HStack>
-    <Button
-      size="lg"
-      borderRadius="full"
-      variant="solid"
-      onClick={handleSleepEstimate}
-    >
-      Calculate
-    </Button>
-    <Heading as="h3" size="md" fontWeight="bold" display="block">
-      {title2}
-    </Heading>
-    <Button size="lg" borderRadius="full" variant="solid">
-      ZZZ...
-    </Button>
-    <Heading as="h3" size="md" fontWeight="bold" display="block">
-      {title3}
-    </Heading>
-    <Button size="lg" borderRadius="full" variant="solid">
-      Calculate
-    </Button>
-  </VStack>
-)
+const Form = ({handleSleepEstimate}) => {
+  const {handleSubmit, errors, register, formState} = useForm()
 
-const SleepView = ({calculateAgain}) => {
+  function validateHour(value) {
+    if (!value) {
+      return 'Hour is required'
+    } else return true
+  }
+
+  function validateMinute(value) {
+    if (!value) {
+      return 'Minute is required'
+    } else return true
+  }
+
+  function onSubmit(values) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        alert(JSON.stringify(values, null, 2))
+        handleSleepEstimate(values)
+        resolve()
+      }, 1)
+    })
+  }
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <VStack
+        align="center"
+        justify="center"
+        direction="column"
+        wrap="nowrap"
+        maxW="1200px"
+        px={8}
+        py={160}
+        spacing={12}
+      >
+        <Heading as="h3" size="md" fontWeight="bold" display="block">
+          {title}
+        </Heading>
+        <HStack spacing={3} d="flex" align="start">
+          <FormControl isInvalid={errors.hour}>
+            <Select
+              w="17vh"
+              placeholder="hour"
+              size="md"
+              name="hour"
+              ref={register({validate: validateHour})}
+            >
+              {hours.map((hour) => (
+                <option key={hour} value={hour}>
+                  {hour}
+                </option>
+              ))}
+            </Select>
+            <FormErrorMessage>
+              {errors.hour && errors.hour.message}
+            </FormErrorMessage>
+          </FormControl>
+          <FormControl isInvalid={errors.minute}>
+            <Select
+              w="17vh"
+              placeholder="minute"
+              size="md"
+              name="minute"
+              ref={register({validate: validateMinute})}
+            >
+              {minutes.map((minute) => (
+                <option key={minute} value={minute}>
+                  {minute}
+                </option>
+              ))}
+            </Select>
+            <FormErrorMessage>
+              {errors.minute && errors.minute.message}
+            </FormErrorMessage>
+          </FormControl>
+          <Select w="17vh" size="md" name="meridiem" ref={register()}>
+            <option value="am">AM</option>
+            <option value="pm">PM</option>
+          </Select>
+        </HStack>
+        <Button size="lg" borderRadius="full" variant="solid" type="submit">
+          Calculate
+        </Button>
+        <Heading as="h3" size="md" fontWeight="bold" display="block">
+          {title2}
+        </Heading>
+        <Button size="lg" borderRadius="full" variant="solid">
+          ZZZ...
+        </Button>
+        <Heading as="h3" size="md" fontWeight="bold" display="block">
+          {title3}
+        </Heading>
+        <Button size="lg" borderRadius="full" variant="solid">
+          Calculate
+        </Button>
+      </VStack>
+    </form>
+  )
+}
+
+type CalculateAgain = () => {}
+
+interface SleepViewProps {
+  calculateAgain: CalculateAgain
+}
+
+const SleepView = ({calculateAgain}: SleepViewProps) => {
   return (
     <VStack
       align="center"
