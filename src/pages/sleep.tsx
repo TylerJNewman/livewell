@@ -23,8 +23,8 @@ interface FormValues {
 }
 
 const title = 'I have to wake up at...'
-const title2 = 'If you go to bed NOW, you should wake up at...'
-const title3 = 'I plan to FALL ASLEEP at...'
+// const title2 = 'If you go to bed NOW, you should wake up at...'
+// const title3 = 'I plan to FALL ASLEEP at...'
 
 const initializeArrayWithRange = (end: number, start = 0, step = 1) =>
   Array.from(
