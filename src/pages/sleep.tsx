@@ -20,10 +20,10 @@ const title = 'I have to wake up at...'
 const title2 = 'If you go to bed NOW, you should wake up at...'
 const title3 = 'I plan to FALL ASLEEP at...'
 
-const initializeArrayWithRange = (end, start = 0, step = 1) =>
+const initializeArrayWithRange = (end: number, start = 0, step = 1) =>
   Array.from(
     {length: Math.ceil((end - start + 1) / step)},
-    (v, i) => i * step + start,
+    (_v, i) => i * step + start,
   )
 
 const hours = new Array(12).fill(null).map((_, i) => i + 1)
@@ -38,8 +38,8 @@ const sleepTime = ({hour = '1', minute = '00', meridiem = 'am'}) => {
 
   let wakeup = now
     .startOf('day')
-    .add(hour * m, 'hours')
-    .add(minute, 'minutes')
+    .add(+hour * m, 'hours')
+    .add(+minute, 'minutes')
 
   const sixCycles = wakeup.subtract(90 * 6, 'minutes') // 9 hrs
   const fiveCycles = wakeup.subtract(90 * 5, 'minutes') // 7.5 hrs
@@ -50,22 +50,26 @@ const sleepTime = ({hour = '1', minute = '00', meridiem = 'am'}) => {
   return [sixCycles, fiveCycles, fourCycles].map(format)
 }
 
-const Form = ({handleSleepEstimate}) => {
-  const {handleSubmit, errors, register, formState} = useForm()
+inteface FormProps {
+  handleSleepEstimate: () => void
+}
 
-  function validateHour(value) {
+const Form = ({handleSleepEstimate}: FormProps) => {
+  const {handleSubmit, errors, register} = useForm()
+
+  function validateHour(value: string) {
     if (!value) {
       return 'Please select the hour'
     } else return true
   }
 
-  function validateMinute(value) {
+  function validateMinute(value: string) {
     if (!value) {
       return 'Please select the minute'
     } else return true
   }
 
-  function onSubmit(values) {
+  function onSubmit(values: any) {
     handleSleepEstimate(values)
   }
   return (
@@ -212,7 +216,7 @@ const Sleep = () => {
   const [sleepView, setSleepView] = useState(false)
   const [cycles, setCycles] = useState(false)
 
-  const handleSleepEstimate = (values) => {
+  const handleSleepEstimate = (values: { hour?: string | undefined; minute?: string | undefined; meridiem?: string | undefined }) => {
     const _cycles = sleepTime(values)
     setCycles(_cycles)
     setSleepView(true)
