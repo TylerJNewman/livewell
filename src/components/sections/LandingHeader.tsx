@@ -1,6 +1,6 @@
 import React from 'react'
 import NextLink from 'next/link'
-import {Box, Flex, Text, Button, Link} from '@chakra-ui/react'
+import {Box, Flex, Button, Link} from '@chakra-ui/react'
 import Logo from '../ui/Logo'
 
 const MenuItems = (props: any) => {
