@@ -9,6 +9,7 @@ import {
   FormErrorMessage,
   FormControl,
   Badge,
+  useColorMode,
 } from '@chakra-ui/react'
 import React, {useState} from 'react'
 import Layout from 'src/components/layouts/Layout'
@@ -230,7 +231,7 @@ const Sleep = () => {
 
   const {colorMode, toggleColorMode} = useColorMode()
 
-  colorMode === light ? toggleColorMode() : null
+  colorMode === 'light' ? toggleColorMode() : null
 
   return (
     <Layout
