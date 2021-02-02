@@ -1,21 +1,21 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import {useForm} from 'react-hook-form'
 import {
   Box,
   Button,
   FormControl,
   FormErrorMessage,
-  FormHelperText,
+  // FormHelperText,
   FormLabel,
   Input,
-  useToast,
+  // useToast,
 } from '@chakra-ui/react'
 // import {useTimeout} from 'src/hooks'
 
 export default function HookForm() {
   const {handleSubmit, errors, register, formState} = useForm()
 
-  function validateName(value) {
+  function validateName(value: string) {
     if (!value) {
       return 'Name is required'
     } else if (value !== 'Naruto') {
@@ -23,8 +23,8 @@ export default function HookForm() {
     } else return true
   }
 
-  function onSubmit(values) {
-    return new Promise((resolve) => {
+  function onSubmit(values: any) {
+    return new Promise<void>((resolve) => {
       setTimeout(() => {
         alert(JSON.stringify(values, null, 2))
         resolve()
