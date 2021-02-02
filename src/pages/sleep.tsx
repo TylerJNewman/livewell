@@ -228,6 +228,10 @@ const Sleep = () => {
 
   const calculateAgain = () => setSleepView(false)
 
+  const {colorMode, toggleColorMode} = useColorMode()
+
+  colorMode === light ? toggleColorMode() : null
+
   return (
     <Layout
       overflow="scroll"
