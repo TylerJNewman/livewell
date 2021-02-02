@@ -9,10 +9,13 @@ import {
   Text,
   FormErrorMessage,
   FormControl,
+  Tag,
+  Badge,
 } from '@chakra-ui/react'
 import React, {useState} from 'react'
 import Layout from 'src/components/layouts/Layout'
 import {useForm} from 'react-hook-form'
+import dayjs from 'dayjs'
 
 const title = 'I have to wake up at...'
 const title2 = 'If you go to bed NOW, you should wake up at...'
@@ -29,29 +32,42 @@ const minutes = initializeArrayWithRange(55, 0, 5).map((m) =>
   m.toString().padStart(2, '0'),
 )
 
+const sleepTime = ({hour = '1', minute = '00', meridiem = 'am'}) => {
+  let m = meridiem === 'am' ? 1 : 2
+
+  let now = dayjs()
+
+  let wakeup = now
+    .startOf('day')
+    .add(hour * m, 'hours')
+    .add(minute, 'minutes')
+
+  const sixCycles = wakeup.subtract(90 * 6, 'minutes') // 9 hrs
+  const fiveCycles = wakeup.subtract(90 * 5, 'minutes') // 7.5 hrs
+  const fourCycles = wakeup.subtract(90 * 4, 'minutes') // 6 hrs
+
+  const format = (time: number) => time.format('h:mm A')
+
+  return [sixCycles, fiveCycles, fourCycles].map(format)
+}
+
 const Form = ({handleSleepEstimate}) => {
   const {handleSubmit, errors, register, formState} = useForm()
 
   function validateHour(value) {
     if (!value) {
-      return 'Hour is required'
+      return 'Please select the hour'
     } else return true
   }
 
   function validateMinute(value) {
     if (!value) {
-      return 'Minute is required'
+      return 'Please select the minute'
     } else return true
   }
 
   function onSubmit(values) {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        alert(JSON.stringify(values, null, 2))
-        handleSleepEstimate(values)
-        resolve()
-      }, 1)
-    })
+    handleSleepEstimate(values)
   }
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -130,20 +146,21 @@ const Form = ({handleSleepEstimate}) => {
   )
 }
 
-type CalculateAgain = () => {}
-
 interface SleepViewProps {
-  calculateAgain: CalculateAgain
+  calculateAgain: () => void
+  cycles: string[]
 }
 
-const SleepView = ({calculateAgain}: SleepViewProps) => {
+const d = ['7:30 PM', '4:30 PM']
+
+const SleepView = ({calculateAgain, cycles = d}: SleepViewProps) => {
   return (
     <VStack
       align="center"
       justify="center"
       direction="column"
       wrap="nowrap"
-      maxW="1200px"
+      maxW="730px"
       px={8}
       py={160}
       spacing={6}
@@ -151,7 +168,16 @@ const SleepView = ({calculateAgain}: SleepViewProps) => {
       <Text fontSize="130%">
         You should try to <b>fall asleep</b> at one of the following times:
       </Text>
-
+      <VStack py={6} spacing={8}>
+        {cycles.map((cycle: string) => (
+          // <Tag key={cycle} size={'lg'} borderRadius="full" variant="solid">
+          //   {cycle}
+          // </Tag>
+          <Badge key={cycle} colorScheme="teal" fontSize="2em" padding="12px">
+            {cycle}
+          </Badge>
+        ))}
+      </VStack>
       <Text style={{fontSize: '140%', color: 'rgb(0, 128, 255)'}}>
         Please keep in mind that you should be <b>falling asleep</b> at these
         times.
@@ -185,8 +211,11 @@ const Sleep = () => {
   const {colorMode, toggleColorMode} = useColorMode()
 
   const [sleepView, setSleepView] = useState(false)
+  const [cycles, setCycles] = useState(false)
 
-  const handleSleepEstimate = () => {
+  const handleSleepEstimate = (values) => {
+    const _cycles = sleepTime(values)
+    setCycles(_cycles)
     setSleepView(true)
   }
 
@@ -207,7 +236,7 @@ const Sleep = () => {
       {!sleepView ? (
         <Form handleSleepEstimate={handleSleepEstimate} />
       ) : (
-        <SleepView calculateAgain={calculateAgain} />
+        <SleepView calculateAgain={calculateAgain} cycles={cycles} />
       )}
     </Layout>
   )
