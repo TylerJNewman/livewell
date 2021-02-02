@@ -1,5 +1,4 @@
 import {
-  useColorMode,
   Button,
   Heading,
   HStack,
@@ -211,10 +210,8 @@ const SleepView = ({calculateAgain, cycles = d}: SleepViewProps) => {
 }
 
 const Sleep = () => {
-  const {colorMode, toggleColorMode} = useColorMode()
-
   const [sleepView, setSleepView] = useState(false)
-  const [cycles, setCycles] = useState(false)
+  const [cycles, setCycles] = useState<string[]>([])
 
   const handleSleepEstimate = (values: { hour?: string | undefined; minute?: string | undefined; meridiem?: string | undefined }) => {
     const _cycles = sleepTime(values)
