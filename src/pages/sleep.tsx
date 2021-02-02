@@ -139,18 +139,18 @@ const Form = ({handleSleepEstimate}: FormProps) => {
         <Button size="lg" borderRadius="full" variant="solid" type="submit">
           Calculate
         </Button>
-        <Heading as="h3" size="md" fontWeight="bold" display="block">
+        {/* <Heading as="h3" size="md" fontWeight="bold" display="block">
           {title2}
         </Heading>
         <Button size="lg" borderRadius="full" variant="solid">
           ZZZ...
-        </Button>
-        <Heading as="h3" size="md" fontWeight="bold" display="block">
+        </Button> */}
+        {/* <Heading as="h3" size="md" fontWeight="bold" display="block">
           {title3}
         </Heading>
         <Button size="lg" borderRadius="full" variant="solid">
           Calculate
-        </Button>
+        </Button> */}
       </VStack>
     </form>
   )
@@ -161,9 +161,7 @@ interface SleepViewProps {
   cycles: string[]
 }
 
-const d = ['7:30 PM', '4:30 PM']
-
-const SleepView = ({calculateAgain, cycles = d}: SleepViewProps) => {
+const SleepView = ({calculateAgain, cycles}: SleepViewProps) => {
   return (
     <VStack
       align="center"
@@ -178,7 +176,7 @@ const SleepView = ({calculateAgain, cycles = d}: SleepViewProps) => {
       <Text fontSize="130%">
         You should try to <b>fall asleep</b> at one of the following times:
       </Text>
-      <VStack py={6} spacing={8}>
+      <HStack py={6} spacing={8}>
         {cycles.map((cycle: string) => (
           // <Tag key={cycle} size={'lg'} borderRadius="full" variant="solid">
           //   {cycle}
@@ -187,16 +185,16 @@ const SleepView = ({calculateAgain, cycles = d}: SleepViewProps) => {
             {cycle}
           </Badge>
         ))}
-      </VStack>
-      <Text style={{fontSize: '140%', color: 'rgb(0, 128, 255)'}}>
+      </HStack>
+      <Text fontSize="140%" color="rgb(0, 128, 255)">
         Please keep in mind that you should be <b>falling asleep</b> at these
         times.
       </Text>
-      <Text style={{fontSize: '140%', color: 'rgb(0, 128, 255)'}}>
+      <Text fontSize="140%" color="rgb(0, 128, 255)">
         The average human takes <b>fourteen minutes</b> to fall asleep, so plan
         accordingly!
       </Text>
-      <Text style={{fontSize: '130%', color: 'rgb(153, 102, 204)'}}>
+      <Text fontSize="140%" color="rgb(153, 102, 204)">
         This app works by counting backwards in <b>sleep cycles</b>. Waking up
         in the middle of a sleep cycle leaves you feeling tired and groggy, but
         waking up <i>in between</i> cycles wakes you up feeling refreshed and
