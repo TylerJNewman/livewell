@@ -4,12 +4,8 @@ import {
   HStack,
   Select,
   VStack,
-  Center,
-  Text,
   FormErrorMessage,
   FormControl,
-  Badge,
-  useColorMode,
   useToast,
   ColorModeScript,
 } from '@chakra-ui/react'
@@ -18,7 +14,9 @@ import Layout from 'src/components/layouts/Layout'
 import {useForm} from 'react-hook-form'
 
 import {HOURS, MINUTES} from './utils/constants'
-import {sleepTime} from './utils/math'
+import {sleepTime, wakeTime} from './utils/math'
+import SleepView from 'src/components/sections/SleepView'
+import WakeView from 'src/components/sections/WakeView'
 
 interface FormValues {
   hour?: string | undefined
@@ -27,14 +25,15 @@ interface FormValues {
 }
 
 const title = 'I have to wake up at...'
-// const title2 = 'If you go to bed NOW, you should wake up at...'
+const title2 = 'If you go to bed NOW, you should wake up at...'
 // const title3 = 'I plan to FALL ASLEEP at...'
 
 interface FormProps {
-  handleSleepEstimate: (values: FormValues) => void
+  handleSleepTime: (values: FormValues) => void
+  handleWakeTime: () => void
 }
 
-const Form = ({handleSleepEstimate}: FormProps) => {
+const Form = ({handleSleepTime, handleWakeTime}: FormProps) => {
   const {handleSubmit, errors, register} = useForm()
   const toast = useToast()
 
@@ -51,7 +50,7 @@ const Form = ({handleSleepEstimate}: FormProps) => {
   }
 
   function onSubmit(values: any) {
-    handleSleepEstimate(values)
+    handleSleepTime(values)
   }
 
   React.useEffect(() => {
@@ -134,12 +133,17 @@ const Form = ({handleSleepEstimate}: FormProps) => {
         <Button size="lg" borderRadius="full" variant="solid" type="submit">
           Calculate
         </Button>
-        {/* <Heading as="h3" size="md" fontWeight="bold" display="block">
+        <Heading as="h3" size="md" fontWeight="bold" display="block">
           {title2}
         </Heading>
-        <Button size="lg" borderRadius="full" variant="solid">
+        <Button
+          size="lg"
+          borderRadius="full"
+          variant="solid"
+          onClick={handleWakeTime}
+        >
           ZZZ...
-        </Button> */}
+        </Button>
         {/* <Heading as="h3" size="md" fontWeight="bold" display="block">
           {title3}
         </Heading>
@@ -151,76 +155,28 @@ const Form = ({handleSleepEstimate}: FormProps) => {
   )
 }
 
-interface SleepViewProps {
-  calculateAgain: () => void
-  cycles: string[]
-}
-
-const SleepView = ({calculateAgain, cycles}: SleepViewProps) => {
-  return (
-    <VStack
-      align="center"
-      justify="center"
-      direction="column"
-      wrap="nowrap"
-      maxW="730px"
-      px={8}
-      py={160}
-      spacing={6}
-    >
-      <Text fontSize="130%">
-        You should try to <b>fall asleep</b> at one of the following times:
-      </Text>
-      <HStack py={6} spacing={8}>
-        {cycles.map((cycle: string) => (
-          // <Tag key={cycle} size={'lg'} borderRadius="full" variant="solid">
-          //   {cycle}
-          // </Tag>
-          <Badge key={cycle} colorScheme="teal" fontSize="2em" padding="12px">
-            {cycle}
-          </Badge>
-        ))}
-      </HStack>
-      <Text fontSize="140%" color="rgb(0, 128, 255)">
-        Please keep in mind that you should be <b>falling asleep</b> at these
-        times.
-      </Text>
-      <Text fontSize="140%" color="rgb(0, 128, 255)">
-        The average human takes <b>fourteen minutes</b> to fall asleep, so plan
-        accordingly!
-      </Text>
-      <Text fontSize="140%" color="rgb(153, 102, 204)">
-        This app works by counting backwards in <b>sleep cycles</b>. Waking up
-        in the middle of a sleep cycle leaves you feeling tired and groggy, but
-        waking up <i>in between</i> cycles wakes you up feeling refreshed and
-        alert!
-      </Text>
-      <Center>
-        <a
-          className="back"
-          href="#"
-          style={{fontSize: '200%', color: '#cdbc67'}}
-          onClick={calculateAgain}
-        >
-          Calculate Again
-        </a>
-        <br />
-      </Center>
-    </VStack>
-  )
-}
-
 const Sleep = () => {
   const [sleepView, setSleepView] = useState(false)
-  const [cycles, setCycles] = useState<string[]>([])
+  const [wakeView, setWakeView] = useState(false)
+  const [sleepCycles, setSleepCycles] = useState<string[]>([])
+  const [wakeCycles, setWakeCycles] = useState<string[]>([])
 
-  const handleSleepEstimate = (values: FormValues) => {
+  const handleSleepTime = (values: FormValues) => {
     const _cycles = sleepTime(values)
-    setCycles(_cycles)
+    setSleepCycles(_cycles)
     setSleepView(true)
   }
 
-  const calculateAgain = () => setSleepView(false)
+  const handleWakeTime = () => {
+    const _cycles = wakeTime()
+    setWakeCycles(_cycles)
+    setWakeView(true)
+  }
+
+  const calculateAgain = () => {
+    setSleepView(false)
+    setWakeView(false)
+  }
 
   return (
     <>
@@ -233,13 +189,17 @@ const Sleep = () => {
         lightColor={'blue.900'}
         px={20}
       >
-        {/* <Button onClick={toggleColorMode}>
-        Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
-      </Button> */}
-        {!sleepView ? (
-          <Form handleSleepEstimate={handleSleepEstimate} />
-        ) : (
-          <SleepView calculateAgain={calculateAgain} cycles={cycles} />
+        {!sleepView && !wakeView && (
+          <Form
+            handleSleepTime={handleSleepTime}
+            handleWakeTime={handleWakeTime}
+          />
+        )}
+        {sleepView && (
+          <SleepView calculateAgain={calculateAgain} cycles={sleepCycles} />
+        )}
+        {wakeView && (
+          <WakeView calculateAgain={calculateAgain} cycles={wakeCycles} />
         )}
       </Layout>
     </>
