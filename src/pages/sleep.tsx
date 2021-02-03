@@ -11,6 +11,7 @@ import {
   Badge,
   useColorMode,
   useToast,
+  ColorModeScript,
 } from '@chakra-ui/react'
 import React, {useState} from 'react'
 import Layout from 'src/components/layouts/Layout'
@@ -221,30 +222,27 @@ const Sleep = () => {
 
   const calculateAgain = () => setSleepView(false)
 
-  const {colorMode, toggleColorMode} = useColorMode()
-
-  React.useLayoutEffect(() => {
-    if (colorMode === 'light') toggleColorMode()
-  }, [colorMode])
-
   return (
-    <Layout
-      overflow="scroll"
-      height="100vh"
-      // lightColor={'orange.300'}
-      darkColor={'blue.900'}
-      lightColor={'blue.900'}
-      px={20}
-    >
-      {/* <Button onClick={toggleColorMode}>
+    <>
+      <ColorModeScript initialColorMode="dark" />
+      <Layout
+        overflow="scroll"
+        height="100vh"
+        // lightColor={'orange.300'}
+        darkColor={'blue.900'}
+        lightColor={'blue.900'}
+        px={20}
+      >
+        {/* <Button onClick={toggleColorMode}>
         Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
       </Button> */}
-      {!sleepView ? (
-        <Form handleSleepEstimate={handleSleepEstimate} />
-      ) : (
-        <SleepView calculateAgain={calculateAgain} cycles={cycles} />
-      )}
-    </Layout>
+        {!sleepView ? (
+          <Form handleSleepEstimate={handleSleepEstimate} />
+        ) : (
+          <SleepView calculateAgain={calculateAgain} cycles={cycles} />
+        )}
+      </Layout>
+    </>
   )
 }
 
