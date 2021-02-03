@@ -13,8 +13,8 @@ import React, {useState} from 'react'
 import Layout from 'src/components/layouts/Layout'
 import {useForm} from 'react-hook-form'
 
-import {HOURS, MINUTES} from './utils/constants'
-import {sleepTime, wakeTime} from './utils/math'
+import {HOURS, MINUTES} from '../utils/constants'
+import {sleepTime, wakeTime} from '../utils/math'
 import SleepView from 'src/components/sections/SleepView'
 import WakeView from 'src/components/sections/WakeView'
 
