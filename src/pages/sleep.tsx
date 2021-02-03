@@ -251,7 +251,10 @@ const Sleep = () => {
 
   const {colorMode, toggleColorMode} = useColorMode()
 
-  colorMode === 'light' ? toggleColorMode() : null
+  React.useEffect(() => {
+    colorMode === 'light' ? toggleColorMode() : null
+    setSleepView(false)
+  }, [colorMode])
 
   return (
     <Layout
