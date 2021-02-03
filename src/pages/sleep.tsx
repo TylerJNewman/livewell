@@ -15,7 +15,9 @@ import {
 import React, {useState} from 'react'
 import Layout from 'src/components/layouts/Layout'
 import {useForm} from 'react-hook-form'
-import dayjs, {Dayjs} from 'dayjs'
+
+import {HOURS, MINUTES} from './utils/constants'
+import {sleepTime} from './utils/math'
 
 interface FormValues {
   hour?: string | undefined
@@ -26,36 +28,6 @@ interface FormValues {
 const title = 'I have to wake up at...'
 // const title2 = 'If you go to bed NOW, you should wake up at...'
 // const title3 = 'I plan to FALL ASLEEP at...'
-
-const initializeArrayWithRange = (end: number, start = 0, step = 1) =>
-  Array.from(
-    {length: Math.ceil((end - start + 1) / step)},
-    (_v, i) => i * step + start,
-  )
-
-const hours = new Array(12).fill(null).map((_, i) => i + 1)
-const minutes = initializeArrayWithRange(55, 0, 5).map((m) =>
-  m.toString().padStart(2, '0'),
-)
-
-const sleepTime = ({hour = '1', minute = '00', meridiem = 'am'}) => {
-  let m = meridiem === 'am' ? 1 : 2
-
-  let now = dayjs()
-
-  let wakeup = now
-    .startOf('day')
-    .add(+hour * m, 'hours')
-    .add(+minute, 'minutes')
-
-  const sixCycles = wakeup.subtract(90 * 6, 'minutes') // 9 hrs
-  const fiveCycles = wakeup.subtract(90 * 5, 'minutes') // 7.5 hrs
-  const fourCycles = wakeup.subtract(90 * 4, 'minutes') // 6 hrs
-
-  const formatTime = (time: Dayjs) => time.format('h:mm A')
-
-  return [sixCycles, fiveCycles, fourCycles].map(formatTime)
-}
 
 interface FormProps {
   handleSleepEstimate: (values: FormValues) => void
@@ -125,7 +97,7 @@ const Form = ({handleSleepEstimate}: FormProps) => {
               name="hour"
               ref={register({validate: validateHour})}
             >
-              {hours.map((hour) => (
+              {HOURS.map((hour) => (
                 <option key={hour} value={hour}>
                   {hour}
                 </option>
@@ -143,7 +115,7 @@ const Form = ({handleSleepEstimate}: FormProps) => {
               name="minute"
               ref={register({validate: validateMinute})}
             >
-              {minutes.map((minute) => (
+              {MINUTES.map((minute) => (
                 <option key={minute} value={minute}>
                   {minute}
                 </option>
@@ -251,9 +223,8 @@ const Sleep = () => {
 
   const {colorMode, toggleColorMode} = useColorMode()
 
-  React.useEffect(() => {
-    colorMode === 'light' ? toggleColorMode() : null
-    setSleepView(false)
+  React.useLayoutEffect(() => {
+    if (colorMode === 'light') toggleColorMode()
   }, [colorMode])
 
   return (
